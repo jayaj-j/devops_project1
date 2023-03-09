@@ -1,0 +1,21 @@
+-hosts: Test_Server
+  become: true
+  become_user: root
+  tasks
+  - name: Install_Git
+    yum: name=git state=present
+  - name: Get the docker file
+    git: repo=https://github.com/jayaj-j/devops_project1 /tmp/docker
+  - name: Get the Project Files
+    git: repo=https://github.com/edureka-devops/projCert.git dest=/tmp/docker/phpProject
+  - name: Install Docker
+    yum: name=docker state=present
+  - name: start Docker
+    service: name=docker state=started
+  - name: Build the dockerfile 
+    command: chdir=/tmp/docker docker build -t deployphp:ansible .
+  - name: stopping all running containers. 
+    shell: docker stop $(docker ps -a -q)
+    ignore_errors: true
+  - name: Run the docker image
+    command: docker run -itd -p 80:80 deployphp:ansible  
