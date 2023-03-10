@@ -5,6 +5,7 @@
   tasks:
   - name: stopping al running containers
     shell: docker stop $(docker ps -a -q)
-	ignore_errors: true
+    ignore_errors: true
   - name: Removing all unused containers
-    command: docker system prune -fa
+    command: docker system prune -f
+    
