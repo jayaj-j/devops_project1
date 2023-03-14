@@ -50,4 +50,4 @@ def test_product_link(browser):
 
 # Test step 5 - Check Contact Link Present
 def test_contact_link(browser):
-    assert browser.find_element_by_id("Contact ")
+    assert browser.find_element_by_id("Contact")
