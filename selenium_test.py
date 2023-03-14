@@ -25,7 +25,7 @@ def browser():
 
 # Test step 1 - Open URL
 def test_open_url(browser):
-    browser.get("http://3.108.252.64/")
+    browser.get("http://3.110.207.210/")
 
 
 # Test step 2 - Check Title
